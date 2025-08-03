@@ -1,28 +1,20 @@
 
+import { db } from '../db';
+import { productCategoriesTable } from '../db/schema';
 import { type ProductCategory } from '../schema';
+import { eq, asc } from 'drizzle-orm';
 
 export const getProductCategories = async (): Promise<ProductCategory[]> => {
-    // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is fetching all active product categories ordered by display_order.
-    // Should return categories like "Drinks", "Food", "Coffee Beans", "Merchandise", etc.
-    return [
-        {
-            id: 1,
-            name: "Hot Drinks",
-            description: "Freshly brewed coffee, espresso, and hot beverages",
-            image_url: "/images/categories/hot-drinks.jpg",
-            display_order: 1,
-            is_active: true,
-            created_at: new Date()
-        },
-        {
-            id: 2,
-            name: "Cold Drinks",
-            description: "Iced coffee, frappuccinos, and refreshing beverages",
-            image_url: "/images/categories/cold-drinks.jpg",
-            display_order: 2,
-            is_active: true,
-            created_at: new Date()
-        }
-    ];
+  try {
+    const results = await db.select()
+      .from(productCategoriesTable)
+      .where(eq(productCategoriesTable.is_active, true))
+      .orderBy(asc(productCategoriesTable.display_order))
+      .execute();
+
+    return results;
+  } catch (error) {
+    console.error('Failed to fetch product categories:', error);
+    throw error;
+  }
 };

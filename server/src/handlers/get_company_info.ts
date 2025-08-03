@@ -8,9 +8,7 @@ export interface CompanyInfo {
 }
 
 export const getCompanyInfo = async (): Promise<CompanyInfo> => {
-    // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is providing company information for the "About Us" section.
-    // Should return static company information about Starbucks.
+    // Return static company information about Starbucks for the "About Us" section
     return {
         mission: "To inspire and nurture the human spirit – one person, one cup and one neighborhood at a time.",
         founded: "1971",

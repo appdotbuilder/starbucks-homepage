@@ -1,22 +1,29 @@
 
+import { db } from '../db';
+import { productsTable } from '../db/schema';
 import { type Product } from '../schema';
+import { eq, and, desc } from 'drizzle-orm';
 
 export const getNewProducts = async (): Promise<Product[]> => {
-    // This is a placeholder declaration! Real code should be implemented here.
-    // The goal of this handler is fetching newly launched products for homepage highlights.
-    // Should return products with is_new = true and is_active = true, ordered by created_at desc.
-    return [
-        {
-            id: 2,
-            category_id: 2,
-            name: "Iced Toasted Vanilla Oatmilk Shaken Espresso",
-            description: "Blonde espresso, creamy oatmilk and toasted vanilla flavored syrup",
-            price: 4.85,
-            image_url: "/images/products/iced-toasted-vanilla.jpg",
-            is_recommended: false,
-            is_new: true,
-            is_active: true,
-            created_at: new Date()
-        }
-    ];
+  try {
+    const results = await db.select()
+      .from(productsTable)
+      .where(
+        and(
+          eq(productsTable.is_new, true),
+          eq(productsTable.is_active, true)
+        )
+      )
+      .orderBy(desc(productsTable.created_at))
+      .execute();
+
+    // Convert numeric fields back to numbers
+    return results.map(product => ({
+      ...product,
+      price: parseFloat(product.price)
+    }));
+  } catch (error) {
+    console.error('Get new products failed:', error);
+    throw error;
+  }
 };
