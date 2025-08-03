@@ -5,7 +5,11 @@
 
 @layer components {
   .starbucks-gradient {
-    @apply bg-gradient-to-r from-green-800 to-green-600;
+    @apply bg-gradient-to-r from-red-700 via-red-600 to-red-500;
+  }
+  
+  .starbucks-gradient-alt {
+    @apply bg-gradient-to-r from-red-800 via-red-700 to-green-800;
   }
   
   .starbucks-card-hover {
@@ -16,8 +20,24 @@
     @apply text-green-800;
   }
   
+  .starbucks-red {
+    @apply text-red-700;
+  }
+  
   .starbucks-bg-green {
     @apply bg-green-700 hover:bg-green-800;
+  }
+  
+  .starbucks-bg-red {
+    @apply bg-red-600 hover:bg-red-700;
+  }
+  
+  .red-25 {
+    background-color: #fef7f7;
+  }
+  
+  .orange-25 {
+    background-color: #fefaf7;
   }
 }
 
@@ -31,12 +51,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f5f3f;
+  background: #b91c1c;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #155e37;
+  background: #991b1b;
 }
 
 /* Smooth scrolling */

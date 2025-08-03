@@ -86,9 +86,9 @@ function App() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 to-white flex items-center justify-center">
         <div className="text-center">
-          <div className="w-16 h-16 mx-auto mb-4 bg-green-700 rounded-full animate-pulse"></div>
+          <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-red-600 to-red-700 rounded-full animate-pulse"></div>
           <p className="text-gray-600">Loading your Starbucks experience...</p>
         </div>
       </div>
@@ -170,7 +170,7 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-800 to-green-600 text-white py-20">
+      <section className="bg-gradient-to-r from-red-700 via-red-600 to-red-500 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Fall favorites are back ☕
@@ -178,7 +178,7 @@ function App() {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             The season's most-loved flavors are here. Enjoy the cozy taste of Pumpkin Spice Latte and more.
           </p>
-          <Button size="lg" className="bg-white text-green-800 hover:bg-gray-100 text-lg px-8 py-3">
+          <Button size="lg" className="bg-white text-red-700 hover:bg-gray-100 text-lg px-8 py-3">
             Order Now
           </Button>
         </div>
@@ -186,13 +186,13 @@ function App() {
 
       {/* Current Promotions */}
       {promotions.length > 0 && (
-        <section className="py-16 bg-orange-50">
+        <section className="py-16 bg-red-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Current Offers</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {promotions.map((promotion: Promotion) => (
                 <Card key={promotion.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="h-48 bg-gradient-to-br from-orange-400 to-red-500"></div>
+                  <div className="h-48 bg-gradient-to-br from-red-400 to-red-600"></div>
                   <CardHeader>
                     <CardTitle className="text-green-800">{promotion.title}</CardTitle>
                     <CardDescription>{promotion.description}</CardDescription>
@@ -236,13 +236,13 @@ function App() {
 
       {/* Recommended Products */}
       {recommendedProducts.length > 0 && (
-        <section className="py-16 bg-green-50">
+        <section className="py-16" style={{background: 'linear-gradient(to bottom right, #fef7f7, #fefaf7, #f0fdf4)'}}>
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Barista Recommends</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {recommendedProducts.map((product: Product) => (
                 <Card key={product.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                  <div className="h-48 bg-gradient-to-br from-amber-200 to-orange-300"></div>
+                  <div className="h-48 bg-gradient-to-br from-red-200 via-orange-200 to-amber-200"></div>
                   <CardHeader>
                     <CardTitle className="text-green-800">{product.name}</CardTitle>
                     {product.description && (
@@ -252,7 +252,7 @@ function App() {
                   <CardContent>
                     <div className="flex justify-between items-center">
                       <span className="text-2xl font-bold text-green-700">${product.price.toFixed(2)}</span>
-                      <Badge className="bg-green-700 hover:bg-green-800">Recommended</Badge>
+                      <Badge className="bg-red-600 hover:bg-red-700 text-white">Recommended</Badge>
                     </div>
                   </CardContent>
                 </Card>
@@ -291,7 +291,7 @@ function App() {
       )}
 
       {/* Store Locator */}
-      <section id="stores" className="py-16 bg-gray-50">
+      <section id="stores" className="py-16" style={{background: 'linear-gradient(to bottom right, #f9fafb, #fef7f7)'}}>
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Find a Store</h2>
           <div className="max-w-2xl mx-auto">
@@ -375,23 +375,23 @@ function App() {
 
       {/* About Us */}
       {companyInfo && (
-        <section className="py-16 bg-green-800 text-white">
+        <section className="py-16 bg-gradient-to-r from-red-800 via-red-700 to-green-800 text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-3xl font-bold mb-8">About Starbucks</h2>
               <p className="text-xl mb-8 italic">"{companyInfo.mission}"</p>
-              <Separator className="bg-green-600 my-8" />
+              <Separator className="bg-red-300 my-8" />
               <div className="grid md:grid-cols-3 gap-8 mb-12">
                 <div>
-                  <div className="text-4xl font-bold text-green-200">{companyInfo.founded}</div>
+                  <div className="text-4xl font-bold text-red-200">{companyInfo.founded}</div>
                   <div className="text-lg">Founded</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-green-200">{companyInfo.stores_worldwide.toLocaleString()}+</div>
+                  <div className="text-4xl font-bold text-red-200">{companyInfo.stores_worldwide.toLocaleString()}+</div>
                   <div className="text-lg">Stores Worldwide</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-green-200">80+</div>
+                  <div className="text-4xl font-bold text-red-200">80+</div>
                   <div className="text-lg">Countries</div>
                 </div>
               </div>
@@ -402,7 +402,7 @@ function App() {
                   <ul className="space-y-2">
                     {companyInfo.values.map((value: string, index: number) => (
                       <li key={index} className="flex items-start">
-                        <span className="text-green-300 mr-2">★</span>
+                        <span className="text-red-300 mr-2">★</span>
                         <span>{value}</span>
                       </li>
                     ))}
@@ -410,7 +410,7 @@ function App() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Our Commitment</h3>
-                  <p className="text-green-100 leading-relaxed">
+                  <p className="text-red-100 leading-relaxed">
                     We're committed to ethical sourcing, environmental stewardship, and creating positive impact in communities around the world. Every cup tells a story of connection, quality, and care.
                   </p>
                 </div>
